@@ -1,0 +1,44 @@
+.page {
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(0, 20, 70, 0.5), rgba(0, 20, 70, 0.6)),
+    url('../assets/train.webp') center/cover no-repeat;
+  color: #fff;
+  padding: 60px 24px 48px;
+  text-align: center;
+}
+
+.heroLogo {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.heroTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 20px;
+}
