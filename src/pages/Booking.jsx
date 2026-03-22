@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { trains } from "../data/trains";
 import Wagon from "../components/Wagon";
 import SeatMap from "../components/SeatMap";
 import BookingForm from "../components/Booking";
+import { saveBooking, getBookings } from "../services/BookingService";
 import styles from "./Booking.module.css";
 
 function Booking() {
@@ -16,11 +19,23 @@ function Booking() {
   if (!train) return <div>Потяг не знайдено</div>;
 
   function handleBooking(data) {
-    console.log("Бронювання:", data);
+    const booking = saveBooking(data);
+    toast.success(
+      <div>
+        <strong>✅ Бронювання успішне!</strong>
+        <p>🚂 {booking.train.from} → {booking.train.to}</p>
+        <p>Вагон №{booking.wagon.number} ({booking.wagon.type})</p>
+        <p>Місця: {booking.seats.join(", ")}</p>
+        <p>Ім'я: {booking.name}</p>
+      </div>,
+      { autoClose: 6000 }
+    );
   }
 
   return (
     <div className={styles.page}>
+      <ToastContainer position="top-right" />
+
       <div className={styles.header}>
         <button className={styles.back} onClick={() => navigate("/")}>
           ← Назад
