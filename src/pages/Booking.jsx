@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { trains } from "../data/trains";
 import Wagon from "../components/Wagon";
+import SeatMap from "../components/SeatMap";
 import styles from "./Booking.module.css";
 
 function Booking() {
@@ -9,10 +10,9 @@ function Booking() {
   const navigate = useNavigate();
   const train = trains.find((t) => t.id === Number(trainId));
   const [selectedWagon, setSelectedWagon] = useState(null);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
-  if (!train) {
-    return <div>Потяг не знайдено</div>;
-  }
+  if (!train) return <div>Потяг не знайдено</div>;
 
   return (
     <div className={styles.page}>
@@ -27,11 +27,16 @@ function Booking() {
       </div>
 
       <div className={styles.content}>
-        <Wagon wagons={train.wagons} onSelect={setSelectedWagon} />
+        <Wagon wagons={train.wagons} onSelect={(w) => {
+          setSelectedWagon(w);
+          setSelectedSeats([]);
+        }} />
+
         {selectedWagon && (
-          <p className={styles.selected}>
-            Обрано: Вагон №{selectedWagon.number} ({selectedWagon.type})
-          </p>
+          <SeatMap
+            wagon={selectedWagon}
+            onSeatsChange={setSelectedSeats}
+          />
         )}
       </div>
     </div>
