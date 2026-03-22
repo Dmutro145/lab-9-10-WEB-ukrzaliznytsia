@@ -1,0 +1,46 @@
+.page {
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+
+.header {
+  background: #0053a1;
+  color: #fff;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.back {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.back:hover { background: rgba(255,255,255,0.1); }
+
+.trainInfo { display: flex; flex-direction: column; gap: 2px; }
+
+.route { font-size: 1.3rem; font-weight: 700; margin: 0; }
+
+.number { font-size: 0.9rem; opacity: 0.8; }
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.selected {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #e8f0fb;
+  border-radius: 8px;
+  color: #0053a1;
+  font-weight: 600;
+}
