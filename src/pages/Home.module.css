@@ -42,3 +42,17 @@
   color: #1a1a2e;
   margin: 0 0 20px;
 }
+
+.myBookings {
+  margin-top: 16px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.myBookings:hover { background: rgba(255,255,255,0.3); }
