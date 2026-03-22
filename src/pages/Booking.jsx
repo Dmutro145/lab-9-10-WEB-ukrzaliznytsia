@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { trains } from "../data/trains";
 import Wagon from "../components/Wagon";
 import SeatMap from "../components/SeatMap";
+import BookingForm from "../components/Booking";
 import styles from "./Booking.module.css";
 
 function Booking() {
@@ -13,6 +14,10 @@ function Booking() {
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   if (!train) return <div>Потяг не знайдено</div>;
+
+  function handleBooking(data) {
+    console.log("Бронювання:", data);
+  }
 
   return (
     <div className={styles.page}>
@@ -33,9 +38,15 @@ function Booking() {
         }} />
 
         {selectedWagon && (
-          <SeatMap
+          <SeatMap wagon={selectedWagon} onSeatsChange={setSelectedSeats} />
+        )}
+
+        {selectedWagon && selectedSeats.length > 0 && (
+          <BookingForm
+            train={train}
             wagon={selectedWagon}
-            onSeatsChange={setSelectedSeats}
+            seats={selectedSeats}
+            onSubmit={handleBooking}
           />
         )}
       </div>
