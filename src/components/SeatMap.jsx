@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./SeatMap.module.css";
 
-function generateSeats(total) {
-  return Array.from({ length: total }, (_, i) => ({
-    id: i + 1,
-    number: i + 1,
-    status: Math.random() < 0.3 ? "booked" : "free",
-  }));
+function generateSeats(total, wagonId) {
+  return Array.from({ length: total }, (_, i) => {
+    const seed = (wagonId * 37 + i * 13) % 100;
+    return {
+      id: i + 1,
+      number: i + 1,
+      status: seed < 28 ? "booked" : "free",
+    };
+  });
 }
 
 function SeatMap({ wagon, onSeatsChange }) {
-  const [seats] = useState(() => generateSeats(wagon.totalSeats));
+  const [seats, setSeats] = useState([]);
   const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    setSeats(generateSeats(wagon.totalSeats, wagon.id));
+    setSelected([]);
+    onSeatsChange([]);
+  }, [wagon.id]);
 
   function handleSeat(seat) {
     if (seat.status === "booked") return;
