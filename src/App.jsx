@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Booking from "./pages/Booking";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* /booking/:trainId — буде додано в Лаб. 10 */}
+        <Route path="/booking/:trainId" element={<Booking />} />
       </Routes>
     </BrowserRouter>
   );
