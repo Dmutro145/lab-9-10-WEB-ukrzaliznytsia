@@ -1,0 +1,54 @@
+.container { margin-bottom: 24px; }
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.wagon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 90px;
+}
+
+.wagon:hover {
+  border-color: #0053a1;
+  background: #f0f5ff;
+}
+
+.active {
+  border-color: #0053a1;
+  background: #e8f0fb;
+}
+
+.number {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0053a1;
+}
+
+.type {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.seats {
+  font-size: 0.75rem;
+  color: #888;
+}
