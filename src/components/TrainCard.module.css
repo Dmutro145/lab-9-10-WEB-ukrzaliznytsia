@@ -1,0 +1,162 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid #e8ecf0;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0, 83, 161, 0.15);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trainNumber {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0053a1;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #e8f0fb;
+  color: #0053a1;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+}
+
+.city {
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.arrow {
+  color: #0053a1;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.timeValue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.timeLabel {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.duration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.durationLine {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #aaa;
+  font-size: 0.75rem;
+}
+
+.durationLine::before,
+.durationLine::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: #ccc;
+}
+
+.durationValue {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.seats {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.seatsDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #28a745;
+}
+
+.seatsDotNone {
+  background: #dc3545;
+}
+
+.btn {
+  background: #0053a1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #003f7f;
+}
+
+.btnDisabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.btnDisabled:hover {
+  background: #ccc;
+}
