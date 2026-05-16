@@ -9,12 +9,23 @@ function Home() {
   const navigate = useNavigate();
   const [trains, setTrains] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     fetchTrains()
       .then(data => setTrains(data))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setShowScroll(window.scrollY > 300);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   return (
     <div className={styles.page}>
@@ -29,19 +40,25 @@ function Home() {
 
       <div className={styles.content}>
         <div className={styles.sectionHeader}>
-  <h2 className={styles.sectionTitle}>Доступні рейси</h2>
-  <div className={styles.statsBar}>
-    <span className={styles.statBadge}>🚄 Рейсів: {trains.length}</span>
-    <span className={styles.statBadge}>✅ З місцями: {trains.filter(t => t.availableSeats > 0).length}</span>
-    <span className={styles.statBadge}>🔴 Без місць: {trains.filter(t => t.availableSeats === 0).length}</span>
-  </div>
-</div>
+          <h2 className={styles.sectionTitle}>Доступні рейси</h2>
+          <div className={styles.statsBar}>
+            <span className={styles.statBadge}>🚄 Рейсів: {trains.length}</span>
+            <span className={styles.statBadge}>✅ З місцями: {trains.filter(t => t.availableSeats > 0).length}</span>
+            <span className={styles.statBadge}>🔴 Без місць: {trains.filter(t => t.availableSeats === 0).length}</span>
+          </div>
+        </div>
         {loading ? (
           <p>Завантаження...</p>
         ) : (
           <TrainList trains={trains} />
         )}
       </div>
+
+      {showScroll && (
+        <button className={styles.scrollTop} onClick={scrollToTop}>
+          ↑
+        </button>
+      )}
     </div>
   );
 }
