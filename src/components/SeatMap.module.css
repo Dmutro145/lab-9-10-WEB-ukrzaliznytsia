@@ -3,7 +3,7 @@
 .title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #1a1a2e;
+  color: var(--text-color);
   margin-bottom: 12px;
 }
 
@@ -19,7 +19,7 @@
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .dot {
@@ -49,27 +49,62 @@
 .seat:hover:not(:disabled) { transform: scale(1.1); }
 
 .free {
-  background: #d4edda;
-  color: #155724;
+  background: var(--success-muted);
+  color: var(--success);
 }
 
 .selected {
-  background: #004aad;
-  color: #fff;
+  background: var(--primary);
+  color: var(--button-text);
 }
 
 .booked {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--danger-muted);
+  color: var(--danger);
   cursor: not-allowed;
 }
 
 .info {
   margin-top: 16px;
   padding: 10px 16px;
-  background: #e8f0fb;
+  background: var(--surface-muted);
   border-radius: 8px;
-  color: #0053a1;
+  color: var(--primary);
   font-weight: 600;
   font-size: 0.9rem;
+}
+.progressBar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.occupancy {
+  font-size: 0.78rem;
+  color: #888;
+}
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+  }
+
+  .seat {
+    font-size: 0.65rem;
+  }
+
+  .stats {
+    gap: 10px;
+  }
+
+  .legend {
+    gap: 10px;
+  }
 }
