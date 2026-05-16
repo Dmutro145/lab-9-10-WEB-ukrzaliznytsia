@@ -1,5 +1,5 @@
 .card {
-  background: #fff;
+  background: var(--surface);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 20px 24px;
@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: 14px;
   transition: box-shadow 0.2s, transform 0.2s;
-  border: 1px solid #e8ecf0;
+  border: 1px solid var(--border);
 }
 
 .card:hover {
@@ -24,7 +24,7 @@
 .trainNumber {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #0053a1;
+  color: var(--primary);
 }
 
 .badge {
@@ -32,8 +32,8 @@
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 20px;
-  background: #e8f0fb;
-  color: #0053a1;
+  background: var(--surface-muted);
+  color: var(--primary);
 }
 
 .route {
@@ -45,11 +45,11 @@
 
 .city {
   font-weight: 700;
-  color: #1a1a2e;
+  color: var(--text-color);
 }
 
 .arrow {
-  color: #0053a1;
+  color: var(--primary);
   font-size: 1.2rem;
   flex-shrink: 0;
 }
@@ -59,7 +59,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-secondary);
 }
 
 .time {
@@ -72,12 +72,12 @@
 .timeValue {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #1a1a2e;
+  color: var(--text-color);
 }
 
 .timeLabel {
   font-size: 0.75rem;
-  color: #888;
+  color: var(--text-muted);
 }
 
 .duration {
@@ -91,7 +91,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #aaa;
+  color: var(--text-muted);
   font-size: 0.75rem;
 }
 
@@ -101,7 +101,7 @@
   display: block;
   width: 30px;
   height: 1px;
-  background: #ccc;
+  background: var(--border);
 }
 
 .durationValue {
@@ -114,7 +114,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 10px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border);
 }
 
 .actions {
@@ -125,7 +125,7 @@
 
 .seats {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -135,16 +135,16 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #28a745;
+  background: var(--success);
 }
 
 .seatsDotNone {
-  background: #dc3545;
+  background: var(--danger);
 }
 
 .btn {
-  background: #0053a1;
-  color: #fff;
+  background: var(--primary);
+  color: var(--button-text);
   border: none;
   border-radius: 8px;
   padding: 8px 20px;
@@ -155,22 +155,22 @@
 }
 
 .btn:hover {
-  background: #003f7f;
+  background: var(--primary-dark);
 }
 
 .btnDisabled {
-  background: #ccc;
+  background: var(--border);
   cursor: not-allowed;
 }
 
 .btnDisabled:hover {
-  background: #ccc;
+  background: var(--border);
 }
 
 .btnDetails {
   background: transparent;
-  color: #0053a1;
-  border: 1px solid #0053a1;
+  color: var(--primary);
+  border: 1px solid var(--primary);
   border-radius: 8px;
   padding: 8px 16px;
   font-size: 0.9rem;
@@ -180,7 +180,7 @@
 }
 
 .btnDetails:hover {
-  background: #e8f4ff;
+  background: var(--surface-muted);
 }
 .btnDetails {
   background: none;
@@ -196,4 +196,33 @@
 
 .btnDetails:hover {
   background: #e8f0fb;
+}
+@media (max-width: 480px) {
+  .card {
+    padding: 14px 16px;
+  }
+
+  .route {
+    font-size: 0.95rem;
+  }
+
+  .timeValue {
+    font-size: 1rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn, .btnDetails {
+    flex: 1;
+    text-align: center;
+  }
 }
