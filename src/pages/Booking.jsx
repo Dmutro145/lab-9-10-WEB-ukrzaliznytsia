@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,7 +14,11 @@ function Booking() {
   const { trainId } = useParams();
   const navigate = useNavigate();
   const train = trains.find((t) => t.id === Number(trainId));
-  const { selectedWagon, setSelectedWagon, selectedSeats, setSelectedSeats, resetBooking } = useBooking();
+  const { selectedWagon, setSelectedWagon, selectedSeats, setSelectedSeats, setSelectedTrain, resetBooking } = useBooking();
+
+  useEffect(() => {
+    if (train) setSelectedTrain(train);
+  }, [trainId]);
 
   if (!train) return <div>Потяг не знайдено</div>;
 
