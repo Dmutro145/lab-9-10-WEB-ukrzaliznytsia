@@ -56,3 +56,34 @@
 }
 
 .myBookings:hover { background: rgba(255,255,255,0.3); }
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.statsBar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.statBadge {
+  background: #e8f0fb;
+  color: #0053a1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

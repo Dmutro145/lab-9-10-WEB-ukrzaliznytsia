@@ -1,11 +1,20 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TrainList from "../components/TrainList";
-import { trains } from "../data/trains";
+import { fetchTrains } from "../services/api";
 import styles from "./Home.module.css";
 import trainImg from '../assets/train.webp';
 
 function Home() {
   const navigate = useNavigate();
+  const [trains, setTrains] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTrains()
+      .then(data => setTrains(data))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <div className={styles.page}>
@@ -19,8 +28,19 @@ function Home() {
       </div>
 
       <div className={styles.content}>
-        <h2 className={styles.sectionTitle}>Доступні рейси</h2>
-        <TrainList trains={trains} />
+        <div className={styles.sectionHeader}>
+  <h2 className={styles.sectionTitle}>Доступні рейси</h2>
+  <div className={styles.statsBar}>
+    <span className={styles.statBadge}>🚄 Рейсів: {trains.length}</span>
+    <span className={styles.statBadge}>✅ З місцями: {trains.filter(t => t.availableSeats > 0).length}</span>
+    <span className={styles.statBadge}>🔴 Без місць: {trains.filter(t => t.availableSeats === 0).length}</span>
+  </div>
+</div>
+        {loading ? (
+          <p>Завантаження...</p>
+        ) : (
+          <TrainList trains={trains} />
+        )}
       </div>
     </div>
   );
