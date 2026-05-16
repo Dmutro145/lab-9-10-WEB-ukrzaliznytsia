@@ -18,7 +18,7 @@ function TrainCard({ train }) {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <span className={styles.trainNumber}>№ {train.number}</span>
+        <span className={styles.trainNumber}>{'\u2116'} {train.number}</span>
         <span className={styles.badge}>{train.type}</span>
       </div>
 
@@ -52,13 +52,22 @@ function TrainCard({ train }) {
             ? `Вільних місць: ${train.availableSeats}`
             : "Місць немає"}
         </div>
-        <button
-          className={`${styles.btn} ${!hasSeats ? styles.btnDisabled : ""}`}
-          onClick={() => hasSeats && navigate(`/booking/${train.id}`)}
-          disabled={!hasSeats}
-        >
-          Обрати місця
-        </button>
+        <div className={styles.actions}>
+          <button
+            className={styles.btnDetails}
+            onClick={() => navigate(`/train/${train.id}`)}
+          >
+            Детальніше
+          </button>
+
+          <button
+            className={`${styles.btn} ${!hasSeats ? styles.btnDisabled : ""}`}
+            onClick={() => hasSeats && navigate(`/booking/${train.id}`)}
+            disabled={!hasSeats}
+          >
+            Обрати місця
+          </button>
+        </div>
       </div>
     </div>
   );

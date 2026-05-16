@@ -1,0 +1,109 @@
+.page { min-height: 100vh; background: #f4f7fb; }
+
+.header {
+  background: #0053a1;
+  color: #fff;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.back {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.back:hover { background: rgba(255,255,255,0.1); }
+
+.title { font-size: 1.3rem; font-weight: 700; margin: 0; }
+
+.content {
+  max-width: 700px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.city { color: #1a1a2e; }
+.arrow { color: #0053a1; }
+
+.info { display: flex; flex-direction: column; gap: 12px; }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+
+.label { color: #888; font-weight: 600; }
+
+.badge {
+  background: #e8f0fb;
+  color: #0053a1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.wagons h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a2e;
+}
+
+.wagonList { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.wagon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  gap: 4px;
+}
+
+.btn {
+  background: #0053a1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover { background: #003f7f; }
+.btn:disabled { background: #ccc; cursor: not-allowed; }
+
+.loading { text-align: center; padding: 48px; color: #888; }

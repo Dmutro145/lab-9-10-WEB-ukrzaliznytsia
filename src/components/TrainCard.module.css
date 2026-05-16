@@ -117,6 +117,12 @@
   border-top: 1px solid #f0f0f0;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .seats {
   font-size: 0.85rem;
   color: #555;
@@ -159,4 +165,35 @@
 
 .btnDisabled:hover {
   background: #ccc;
+}
+
+.btnDetails {
+  background: transparent;
+  color: #0053a1;
+  border: 1px solid #0053a1;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnDetails:hover {
+  background: #e8f4ff;
+}
+.btnDetails {
+  background: none;
+  border: 1px solid #0053a1;
+  color: #0053a1;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnDetails:hover {
+  background: #e8f0fb;
 }
