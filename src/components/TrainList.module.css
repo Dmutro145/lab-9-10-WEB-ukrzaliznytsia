@@ -14,12 +14,13 @@
   flex: 1;
   min-width: 200px;
   padding: 10px 16px;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
   transition: border-color 0.2s;
-  background: #fff;
+  background: var(--surface);
+  color: var(--text-color);
 }
 
 .input:focus {
@@ -28,11 +29,12 @@
 
 .select {
   padding: 10px 14px;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
-  background: #fff;
+  background: var(--surface);
+  color: var(--text-color);
   cursor: pointer;
   min-width: 160px;
   transition: border-color 0.2s;
@@ -44,7 +46,7 @@
 
 .results {
   font-size: 0.85rem;
-  color: #777;
+  color: var(--text-secondary);
 }
 
 .grid {
@@ -56,11 +58,25 @@
 .empty {
   text-align: center;
   padding: 48px 0;
-  color: #999;
+  color: var(--text-muted);
   font-size: 1rem;
 }
 
 .emptyIcon {
   font-size: 3rem;
   margin-bottom: 12px;
+}
+@media (max-width: 480px) {
+  .searchBar {
+    flex-direction: column;
+  }
+
+  .input, .select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
