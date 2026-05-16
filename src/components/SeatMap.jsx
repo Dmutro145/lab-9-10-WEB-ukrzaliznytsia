@@ -38,7 +38,7 @@ function SeatMap({ wagon, onSeatsChange }) {
     return styles.free;
   }
 
-  return (
+return (
     <div className={styles.container}>
       <h3 className={styles.title}>
         Схема місць — Вагон №{wagon.number} ({wagon.type})
@@ -54,6 +54,21 @@ function SeatMap({ wagon, onSeatsChange }) {
         <span className={styles.legendItem}>
           <span className={`${styles.dot} ${styles.booked}`} /> Заброньоване
         </span>
+      </div>
+
+      <div className={styles.stats}>
+        <div className={styles.statItem}>
+          <span className={styles.statDot} style={{ background: "#d4edda" }}></span>
+          <span>Вільних: {seats.filter(s => s.status === "free" && !selected.includes(s.id)).length}</span>
+        </div>
+        <div className={styles.statItem}>
+          <span className={styles.statDot} style={{ background: "#004aad" }}></span>
+          <span>Обрано: {selected.length}</span>
+        </div>
+        <div className={styles.statItem}>
+          <span className={styles.statDot} style={{ background: "#f8d7da" }}></span>
+          <span>Зайнято: {seats.filter(s => s.status === "booked").length}</span>
+        </div>
       </div>
 
       <div className={styles.grid}>
@@ -76,7 +91,6 @@ function SeatMap({ wagon, onSeatsChange }) {
         </p>
       )}
     </div>
-  );
-}
-
-export default SeatMap;
+   );
+  }
+export default SeatMap
