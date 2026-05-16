@@ -12,6 +12,12 @@ function Bookings() {
     setBookings([]);
   }
 
+  function handleDelete(id) {
+    const updated = bookings.filter((b) => b.id !== id);
+    localStorage.setItem("bookings", JSON.stringify(updated));
+    setBookings(updated);
+  }
+
   return (
     <div className={styles.page}>
       <div className={styles.header}>
@@ -43,7 +49,23 @@ function Bookings() {
                   <span className={styles.route}>
                     🚂 {b.train.from} → {b.train.to}
                   </span>
-                  <span className={styles.trainNum}>№ {b.train.number}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <span className={styles.trainNum}>№ {b.train.number}</span>
+                    <button
+                      onClick={() => handleDelete(b.id)}
+                      style={{
+                        background: "rgba(255,255,255,0.2)",
+                        border: "1px solid rgba(255,255,255,0.5)",
+                        color: "#fff",
+                        borderRadius: "6px",
+                        padding: "4px 10px",
+                        cursor: "pointer",
+                        fontSize: "0.8rem"
+                      }}
+                    >
+                      ✕ Видалити
+                    </button>
+                  </div>
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.row}>
@@ -67,13 +89,13 @@ function Bookings() {
                     <span>{b.email}</span>
                   </div>
                   <div className={styles.row}>
-                    <span className={styles.label}>Дата</span>
+                    <span className={styles.label}>Дата бронювання</span>
                     <span>{new Date(b.createdAt).toLocaleString("uk-UA")}</span>
                   </div>
                   <div className={styles.row}>
                     <span className={styles.label}>Дата відправлення</span>
                     <span>{new Date(b.train.departure).toLocaleString("uk-UA")}</span>
-                    </div>    
+                  </div>
                 </div>
               </div>
             ))}
