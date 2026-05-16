@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  background: #f4f7fb;
+  background: var(--background);
 }
 
 .hero {
@@ -39,7 +39,7 @@
 .sectionTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1a1a2e;
+  color: var(--text-color);
   margin: 0 0 20px;
 }
 
@@ -80,8 +80,8 @@
 }
 
 .statBadge {
-  background: #e8f0fb;
-  color: #0053a1;
+  background: var(--surface-muted);
+  color: var(--text-secondary);
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -91,8 +91,8 @@
   position: fixed;
   bottom: 32px;
   right: 32px;
-  background: #0053a1;
-  color: #fff;
+  background: var(--primary);
+  color: var(--button-text);
   border: none;
   border-radius: 50%;
   width: 48px;
@@ -105,6 +105,25 @@
 }
 
 .scrollTop:hover {
+  background: var(--primary-dark);
+}
+
+.scrollTop:hover {
   background: #003f7f;
   transform: translateY(-2px);
+}
+.themeToggle {
+  margin-top: 8px;
+  background: rgba(255,255,255,0.15);
+  color: var(--button-text);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.themeToggle:hover {
+  background: rgba(255,255,255,0.25);
 }

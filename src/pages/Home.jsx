@@ -7,9 +7,16 @@ import trainImg from '../assets/train.webp';
 
 function Home() {
   const navigate = useNavigate();
+  const [darkMode, setDarkMode] = useState(false);
   const [trains, setTrains] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
+
+  function toggleTheme() {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    document.documentElement.setAttribute("data-theme", newMode ? "dark" : "light");
+  }
 
   useEffect(() => {
     fetchTrains()
@@ -35,6 +42,9 @@ function Home() {
         <p className={styles.heroSubtitle}>Купуйте квитки онлайн — швидко та зручно</p>
         <button className={styles.myBookings} onClick={() => navigate("/bookings")}>
           🎫 Мої бронювання
+        </button>
+        <button className={styles.themeToggle} onClick={toggleTheme}>
+          {darkMode ? "☀️ Світла" : "🌙 Темна"}
         </button>
       </div>
 
