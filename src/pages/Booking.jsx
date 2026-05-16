@@ -6,15 +6,15 @@ import { trains } from "../data/trains";
 import Wagon from "../components/Wagon";
 import SeatMap from "../components/SeatMap";
 import BookingForm from "../components/Booking";
-import { saveBooking, getBookings } from "../services/BookingService";
+import { saveBooking } from "../services/BookingService";
+import { useBooking } from "../App";
 import styles from "./Booking.module.css";
 
 function Booking() {
   const { trainId } = useParams();
   const navigate = useNavigate();
   const train = trains.find((t) => t.id === Number(trainId));
-  const [selectedWagon, setSelectedWagon] = useState(null);
-  const [selectedSeats, setSelectedSeats] = useState([]);
+  const { selectedWagon, setSelectedWagon, selectedSeats, setSelectedSeats, resetBooking } = useBooking();
 
   if (!train) return <div>Потяг не знайдено</div>;
 
@@ -30,6 +30,7 @@ function Booking() {
       </div>,
       { autoClose: 6000 }
     );
+    resetBooking();
   }
 
   return (
