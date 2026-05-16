@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./BookingForm.module.css";
 
 function BookingForm({ train, wagon, seats, onSubmit }) {
-  const [form, setForm] = useState({ name: "", phone: "", email: "" });
+const [form, setForm] = useState({ name: "", phone: "", email: "", passengers: 1 });
   const [errors, setErrors] = useState({});
 
   function validate() {
@@ -14,6 +14,8 @@ function BookingForm({ train, wagon, seats, onSubmit }) {
     if (!form.email.trim()) newErrors.email = "Введіть email";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       newErrors.email = "Невірний формат email";
+    if (form.passengers < 1 || form.passengers > 6)
+      newErrors.passengers = "Кількість пасажирів від 1 до 6";
     return newErrors;
   }
 
@@ -32,6 +34,7 @@ function BookingForm({ train, wagon, seats, onSubmit }) {
     onSubmit({ ...form, train, wagon, seats });
   }
 
+  
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Форма бронювання</h3>
@@ -41,6 +44,8 @@ function BookingForm({ train, wagon, seats, onSubmit }) {
         <span>Вагон №{wagon.number} ({wagon.type})</span>
         <span>Місця: {seats.join(", ")}</span>
       </div>
+
+      
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.field}>
@@ -81,6 +86,22 @@ function BookingForm({ train, wagon, seats, onSubmit }) {
           />
           {errors.email && <span className={styles.error}>{errors.email}</span>}
         </div>
+        <div className={styles.field}>
+  <label className={styles.label}>Кількість пасажирів</label>
+  <select
+    className={styles.input}
+    name="passengers"
+    value={form.passengers}
+    onChange={handleChange}
+  >
+    {[1,2,3,4,5,6].map(n => (
+      <option key={n} value={n}>
+        {n} {n === 1 ? "пасажир" : n < 5 ? "пасажири" : "пасажирів"}
+      </option>
+    ))}
+  </select>
+  {errors.passengers && <span className={styles.error}>{errors.passengers}</span>}
+</div>
 
         <button type="submit" className={styles.btn}>
           Забронювати
@@ -90,4 +111,6 @@ function BookingForm({ train, wagon, seats, onSubmit }) {
   );
 }
 
+
 export default BookingForm;
+
