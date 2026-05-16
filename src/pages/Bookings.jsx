@@ -8,9 +8,11 @@ function Bookings() {
   const [bookings, setBookings] = useState(getBookings());
 
   function handleClear() {
+  if (window.confirm("Ви впевнені? Всі бронювання будуть видалені!")) {
     clearBookings();
     setBookings([]);
   }
+}
 
   function handleDelete(id) {
     const updated = bookings.filter((b) => b.id !== id);
