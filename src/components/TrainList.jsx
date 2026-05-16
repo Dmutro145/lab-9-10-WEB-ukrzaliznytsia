@@ -5,6 +5,7 @@ import styles from "./TrainList.module.css";
 function TrainList({ trains }) {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("Всі");
+  const [sortBy, setSortBy] = useState("departure");
 
   const types = ["Всі", ...new Set(trains.map((t) => t.type))];
 
@@ -16,6 +17,13 @@ function TrainList({ trains }) {
       train.to.toLowerCase().includes(query);
     const matchType = typeFilter === "Всі" || train.type === typeFilter;
     return matchSearch && matchType;
+  });
+
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortBy === "departure") return new Date(a.departure) - new Date(b.departure);
+    if (sortBy === "seats") return b.availableSeats - a.availableSeats;
+    if (sortBy === "duration") return a.duration.localeCompare(b.duration);
+    return 0;
   });
 
   return (
@@ -34,25 +42,32 @@ function TrainList({ trains }) {
           onChange={(e) => setTypeFilter(e.target.value)}
         >
           {types.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
+            <option key={type} value={type}>{type}</option>
           ))}
+        </select>
+        <select
+          className={styles.select}
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="departure">За часом відправлення</option>
+          <option value="seats">За кількістю місць</option>
+          <option value="duration">За тривалістю</option>
         </select>
       </div>
 
       <span className={styles.results}>
-        Знайдено рейсів: {filtered.length}
+        Знайдено рейсів: {sorted.length}
       </span>
 
-      {filtered.length === 0 ? (
+      {sorted.length === 0 ? (
         <div className={styles.empty}>
           <div className={styles.emptyIcon}>🚂</div>
           <p>Рейсів за вашим запитом не знайдено</p>
         </div>
       ) : (
         <div className={styles.grid}>
-          {filtered.map((train) => (
+          {sorted.map((train) => (
             <TrainCard key={train.id} train={train} />
           ))}
         </div>
@@ -61,4 +76,4 @@ function TrainList({ trains }) {
   );
 }
 
-export default TrainList;
+export default TrainList
