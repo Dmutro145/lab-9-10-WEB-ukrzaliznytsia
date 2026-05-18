@@ -108,3 +108,20 @@
     gap: 10px;
   }
 }
+.resetBtn {
+  background: none;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.resetBtn:hover {
+  background: #dc3545;
+  color: #fff;
+}

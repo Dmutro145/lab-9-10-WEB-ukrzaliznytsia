@@ -84,7 +84,14 @@ return (
           </button>
         ))}
       </div>
-
+      {selected.length > 0 && (
+      <button
+      className={styles.resetBtn}
+      onClick={() => { setSelected([]); onSeatsChange([]); }}
+      >
+      ✕ Скинути вибір ({selected.length})
+      </button>
+      )}
       {selected.length > 0 && (
         <p className={styles.info}>
           Обрано місць: {selected.length} — №{selected.join(", ")}
