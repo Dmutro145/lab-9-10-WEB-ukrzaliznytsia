@@ -4,6 +4,7 @@ import TrainList from "../components/TrainList";
 import { fetchTrains } from "../services/api";
 import styles from "./Home.module.css";
 import trainImg from '../assets/train.webp';
+import { getBookings } from "../services/BookingService";
 
 function Home() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Home() {
   const [trains, setTrains] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showScroll, setShowScroll] = useState(false);
+  const [bookingCount, setBookingCount] = useState(getBookings().length);
 
   function toggleTheme() {
     const newMode = !darkMode;
@@ -19,6 +21,7 @@ function Home() {
   }
 
   useEffect(() => {
+    setBookingCount(getBookings().length);
     fetchTrains()
       .then(data => setTrains(data))
       .finally(() => setLoading(false));
@@ -41,11 +44,23 @@ function Home() {
         <h1 className={styles.heroTitle}>Укрзалізниця</h1>
         <p className={styles.heroSubtitle}>Купуйте квитки онлайн — швидко та зручно</p>
         <button className={styles.myBookings} onClick={() => navigate("/bookings")}>
-          🎫 Мої бронювання
+          🎫 Мої бронювання {bookingCount > 0 && (
+        <span style={{
+          background: "#fff",
+          color: "#0053a1",
+          borderRadius: "50%",
+          padding: "1px 7px",
+          fontSize: "0.8rem",
+          fontWeight: "700",
+          marginLeft: "6px"
+        }}>
+            {bookingCount}
+        </span>
+        )}
         </button>
-        <button className={styles.themeToggle} onClick={toggleTheme}>
-          {darkMode ? "☀️ Світла" : "🌙 Темна"}
-        </button>
+              <button className={styles.themeToggle} onClick={toggleTheme}>
+        {darkMode ? "☀️ Світла" : "🌙 Темна"}
+      </button>
       </div>
 
       <div className={styles.content}>
